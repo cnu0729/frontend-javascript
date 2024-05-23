@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>휴대폰번호 유효성 검사</title>
+        <style>
+            .check{
+                color: green;
+            }
+            .error{
+                color: red;
+            }
+        </style>
+    </head>
+    <body>
+        <h2>회원가입</h2>
+        <form action="#" name="signupForm">
+            <h3>휴대폰번호</h3>
+            <input type="text" class="signup-input" id="inputPNum" name="user_PNum">
+            <br>
+            <span class="input-result"> - 을 포함한 전화번호를 입력하시오</span>
+        </form>
+        <script>
+            const checkList = {
+                "inputName" : false,
+                "inputId" : false,
+                "inputPNum" : false
+            }
+            const inputPNum = document.querySelector("#inputPNum");
+
+            inputPNum.addEventListener("input", e => {
+                const value = e.target.value;
+                const span = e.target.nextElementSibling.nextElementSibling;
+
+                
+                if(value.trim().length == 0){
+                    span.textContent = "- 을 포함한 전화번호를 입력하시오";
+                    //
+                    span.classList.remove("check", "error");
+                    e.target.value="";
+                    checkList["inputPNum"]=false;
+                    return;
+                }
+                // /^\d{11}$/ 숫자를 11자리 입력 (010 0000 0000) 하이픈(-) 없이 입력
+                const 전화번호정규식 = /^\d{3}-\d{3,4}-\d{4}$/; // 하이픈(-)을 추가해서 모두 입력
+
+                if(전화번호정규식.test(value)){
+                    span.textContent = "유효한 전화번호의 형식입니다."
+                    span.classList.add("check");
+                    span.classList.remove("error");
+                    checkList["inputPNum"] = true;
+                }else{
+                    span.textContent = "유효하지 않은 전화번호의 형식입니다."
+                    span.classList.add("error");
+                    span.classList.remove("check");
+                    checkList["inputPNum"] = false;
+                }
+            })
+        </script>
+    </body>
+</html>
