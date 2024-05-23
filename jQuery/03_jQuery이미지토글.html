@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>이미지토글</title>
+        <script
+        type="text/javascript" 
+        src="http://code.jquery.com/jquery-3.7.1.js"></script>
+        <style>
+            img{
+                width: 400px;
+                height: 218px;
+            }
+        </style>
+        <script>
+            function 이미지보이기숨기기(){
+                $("#이미지").slideToggle("slow");
+            }
+        </script>
+    </head>
+    <body>
+        <button id="토글이미지버튼" onclick="이미지보이기숨기기()">이미지버튼</button>
+        <br>
+        <img id="이미지" src="지브리.jpg">
+    </body>
+</html>
