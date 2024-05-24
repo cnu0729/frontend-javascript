@@ -9,11 +9,14 @@
                 $("#검색박스").keyup(function(){
                     const 검색박스 = $(this).val(); //input에서 검색한 내용 가져오기
                     var 검색결과확인;
-                    $('li').each(function(){ // for-each 처럼 반복문
-                        var 텍스트 = $(this).text();
+                    $("#옷리스트 li").each(function(){ // for-each 처럼 반복문
+                        var text = $(this).text();
+                        console.log(" ********************* ");
+                        console.log(text); //자바에서 System.out.print 같은 존재
+
                         // indexOf 는 배열에서 특정 태그의 자리값을 찾는데 사용
                         // index 0부터 시작 -1은 없는 값이기 때문에
-                        if(텍스트.indexOf(검색박스) === -1){ 
+                        if(text.indexOf(검색박스) === -1){ 
                             $(this).hide();
                         }else{
                             $(this).show();
